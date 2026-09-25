@@ -67,11 +67,3 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
-
-# PlatformIO
-.pio/
-.pioenvs/
-.piolibdeps/
-
-# Local secrets - copy secrets.h.example to secrets.h and fill in real values
-include/secrets.h

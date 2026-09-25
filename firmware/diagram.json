@@ -3,28 +3,138 @@
   "author": "Zehn Group",
   "editor": "wokwi",
   "parts": [
-    { "type": "board-esp32-devkit-c-v4", "id": "esp32", "top": 0, "left": 0, "attrs": {} },
-    { "type": "wokwi-dht22", "id": "dht22", "top": -80, "left": 180, "attrs": {} },
-    { "type": "wokwi-hc-sr04", "id": "ultrasonic", "top": -80, "left": 320, "attrs": {} },
-    { "type": "wokwi-relay-module", "id": "relay_feed", "top": 120, "left": 320, "attrs": {} },
-    { "type": "wokwi-led", "id": "relay_water_indicator", "top": 220, "left": 320, "attrs": { "color": "blue" } }
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp32",
+      "top": 0,
+      "left": 0,
+      "attrs": {
+        "fullBoot": "1"
+      }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht22",
+      "top": -80,
+      "left": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic",
+      "top": -80,
+      "left": 320,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay_feed",
+      "top": 120,
+      "left": 320,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay_water",
+      "top": 230,
+      "left": 320,
+      "attrs": {}
+    }
   ],
   "connections": [
-    ["esp32:27", "dht22:SDA", "green", []],
-    ["dht22:VCC", "esp32:3V3", "red", []],
-    ["dht22:GND", "esp32:GND.1", "black", []],
-
-    ["esp32:14", "ultrasonic:TRIG", "yellow", []],
-    ["esp32:32", "ultrasonic:ECHO", "blue", []],
-    ["ultrasonic:VCC", "esp32:5V", "red", []],
-    ["ultrasonic:GND", "esp32:GND.2", "black", []],
-
-    ["esp32:26", "relay_feed:IN", "orange", []],
-    ["relay_feed:VCC", "esp32:5V", "red", []],
-    ["relay_feed:GND", "esp32:GND.3", "black", []],
-
-    ["esp32:25", "relay_water_indicator:A", "purple", []],
-    ["relay_water_indicator:C", "esp32:GND.1", "black", []]
+    [
+      "esp32:D27",
+      "dht22:SDA",
+      "green",
+      []
+    ],
+    [
+      "dht22:VCC",
+      "esp32:3V3",
+      "red",
+      []
+    ],
+    [
+      "dht22:GND",
+      "esp32:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp32:D14",
+      "ultrasonic:TRIG",
+      "yellow",
+      []
+    ],
+    [
+      "esp32:D32",
+      "ultrasonic:ECHO",
+      "blue",
+      []
+    ],
+    [
+      "ultrasonic:VCC",
+      "esp32:VIN",
+      "red",
+      []
+    ],
+    [
+      "ultrasonic:GND",
+      "esp32:GND.2",
+      "black",
+      []
+    ],
+    [
+      "esp32:D26",
+      "relay_feed:IN",
+      "orange",
+      []
+    ],
+    [
+      "relay_feed:VCC",
+      "esp32:VIN",
+      "red",
+      []
+    ],
+    [
+      "relay_feed:GND",
+      "esp32:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp32:D25",
+      "relay_water:IN",
+      "purple",
+      []
+    ],
+    [
+      "relay_water:VCC",
+      "esp32:VIN",
+      "red",
+      []
+    ],
+    [
+      "relay_water:GND",
+      "esp32:GND.2",
+      "black",
+      []
+    ],
+    [
+      "esp32:TX0",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp32:RX0",
+      "$serialMonitor:TX",
+      "",
+      []
+    ]
   ],
+  "serialMonitor": {
+    "display": "terminal"
+  },
   "dependencies": {}
 }
